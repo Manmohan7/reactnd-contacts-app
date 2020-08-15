@@ -21,6 +21,7 @@ function ListContacts(props) {
 
           <button
             className="contact-remove"
+            onClick={() => props.onDeleteContact(contact)}
           >
             Remove
             </button>
