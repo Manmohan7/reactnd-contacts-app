@@ -42,6 +42,20 @@ class App extends Component {
     }))
   }
 
+  /**
+   * this function is envoked from CreateContact
+   * component to create a new contact
+   */
+  onCreateContact = (values) => {
+    ContactsAPI.create(values)
+      .then((newContact) => (
+
+        this.setState((current) => ({
+          contacts: [...current.contacts, newContact]
+        }))
+      ))
+  }
+
   render() {
     return (
       <div>
@@ -53,7 +67,14 @@ class App extends Component {
           />
         )} />
 
-        <Route path="/create" component={CreateContact} />
+        <Route path="/create" render={({ history }) => (
+          <CreateContact
+          onCreateContact={(contact) => {
+            this.onCreateContact(contact)
+            history.push('/')
+          }}
+          />
+        )} />
       </div>
     );
   }
