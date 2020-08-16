@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ListContacts from './ListContacts';
+import CreateContact from './CreateContact';
 import * as ContactsAPI from './utils/ContactsAPI';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
   /**
@@ -12,6 +14,10 @@ class App extends Component {
     contacts: []
   }
 
+  /**
+   * fetch contact details from server when
+   * the component is mounted
+   */
   componentDidMount() {
     ContactsAPI.getAll()
       .then((contacts) => {
@@ -20,7 +26,7 @@ class App extends Component {
         }))
       })
   }
-  
+
   /**
    * This function is here because the data 
    * of all the contacts is here
@@ -28,20 +34,26 @@ class App extends Component {
    */
   removeContact = (contact) => {
     ContactsAPI.remove(contact)
-    
+
     this.setState((currentState) => ({
       contacts: currentState.contacts.filter((c) => {
         return c.id !== contact.id
       })
     }))
   }
+
   render() {
     return (
       <div>
-        <ListContacts 
-          contacts={this.state.contacts}
-          onDeleteContact={this.removeContact}
-        />
+
+        <Route exact path='/' render={() => (
+          <ListContacts
+            contacts={this.state.contacts}
+            onDeleteContact={this.removeContact}
+          />
+        )} />
+
+        <Route path="/create" component={CreateContact} />
       </div>
     );
   }
