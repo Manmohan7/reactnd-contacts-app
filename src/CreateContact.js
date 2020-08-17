@@ -11,11 +11,11 @@ class CreateContact extends Component {
       hash: true
     })
 
-    if(this.props.onCreateContact) {
+    if (this.props.onCreateContact) {
       this.props.onCreateContact(values)
     }
   }
-  
+
   render() {
     return (
       <div className="">

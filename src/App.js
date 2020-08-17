@@ -69,10 +69,10 @@ class App extends Component {
 
         <Route path="/create" render={({ history }) => (
           <CreateContact
-          onCreateContact={(contact) => {
-            this.onCreateContact(contact)
-            history.push('/')
-          }}
+            onCreateContact={(contact) => {
+              this.onCreateContact(contact)
+              history.push('/')
+            }}
           />
         )} />
       </div>
