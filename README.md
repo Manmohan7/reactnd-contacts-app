@@ -1,8 +1,7 @@
 # Contacts Project
 
 This repo is a code-along with the first project in the [React Nanodegree program](https://www.udacity.com/course/react-nanodegree--nd019).
-
-Most of the commits in this repository correspond to videos in the program.
+This is an application which will help you manage your contacts with features like adding new contacts and filtering them.
 
 ## Backend Server
 
