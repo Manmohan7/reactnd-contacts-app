@@ -7,68 +7,80 @@ class ListContacts extends Component {
     contacts: PropTypes.array.isRequired,
     onDeleteContact: PropTypes.func.isRequired,
   }
+
   state = {
     query: ''
   }
+
   updateQuery = (query) => {
     this.setState(() => ({
-      query: query.trim()
+      query: query
     }))
   }
-  clearQuery = () => {
-    this.updateQuery('')
+
+  resetQuery = () => {
+    this.setState(() => ({
+      query: ''
+    }))
   }
+
   render() {
     const { query } = this.state
     const { contacts, onDeleteContact } = this.props
 
-    const showingContacts = query === ''
+    const showingContacts = query === ""
       ? contacts
-      : contacts.filter((c) => (
-          c.name.toLowerCase().includes(query.toLowerCase())
-        ))
+      : contacts.filter((contact) => (
+        contact.name.toLowerCase().includes(query.toLowerCase())
+      ))
 
     return (
-      <div className='list-contacts'>
-        <div className='list-contacts-top'>
+      <div className="list-contacts">
+        <div className="list-contacts-top">
           <input
-            className='search-contacts'
-            type='text'
-            placeholder='Search Contacts'
+            type="text"
+            className="search-contacts"
+            placeholder="Search Contacts"
             value={query}
             onChange={(event) => this.updateQuery(event.target.value)}
           />
+
           <Link
-            to='/create'
-            className='add-contact'
-          >Add Contact</Link>
+            to="/create"
+            className="add-contact"
+          > Add Contact </Link>
         </div>
 
         {showingContacts.length !== contacts.length && (
-          <div className='showing-contacts'>
-            <span>Now showing {showingContacts.length} of {contacts.length}</span>
-            <button onClick={this.clearQuery}>Show all</button>
+          <div className="showing-contacts">
+            <span>Now showing {showingContacts.length} out of {contacts.length}</span>
+            <button onClick={() => this.resetQuery()}> Show All </button>
           </div>
         )}
 
-        <ol className='contact-list'>
+        <ol className="contact-list">
           {showingContacts.map((contact) => (
-            <li key={contact.id} className='contact-list-item'>
+            <li key={contact.id} className="contact-list-item">
+
               <div
-                className='contact-avatar'
+                className="contact-avatar"
                 style={{
                   backgroundImage: `url(${contact.avatarURL})`
                 }}
               ></div>
-              <div className='contact-details'>
-                <p>{contact.name}</p>
-                <p>{contact.handle}</p>
+
+              <div className="contact-details">
+                <p> {contact.name} </p>
+                <p> {contact.handle} </p>
               </div>
+
               <button
+                className="contact-remove"
                 onClick={() => onDeleteContact(contact)}
-                className='contact-remove'>
-                  Remove
+              >
+                Remove
               </button>
+
             </li>
           ))}
         </ol>
