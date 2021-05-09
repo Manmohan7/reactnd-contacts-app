@@ -7,7 +7,7 @@ import { Route } from 'react-router-dom';
 class App extends Component {
   /**
    * for react to have access to the contact
-   * list and reflect the changes in list 
+   * list and reflect the changes in list
    * we need to have it inside state
    */
   state = {
@@ -28,7 +28,7 @@ class App extends Component {
   }
 
   /**
-   * This function is here because the data 
+   * This function is here because the data
    * of all the contacts is here
    * @param {Object} contact contact to be removed
    */
@@ -76,8 +76,8 @@ class App extends Component {
           />
         )} />
       </div>
-    );
+    )
   }
 }
 
-export default App;
+export default App
