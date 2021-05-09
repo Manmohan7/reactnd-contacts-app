@@ -4,20 +4,23 @@ This repo is a code-along with the first project in the [React Nanodegree progra
 
 Most of the commits in this repository correspond to videos in the program.
 
-## Project Setup
-
-- Clone the project - `git clone https://github.com/udacity/reactnd-contacts-complete.git`
-- Install the dependencies - `npm install`
-
 ## Backend Server
 
 The backend server for this in-class project can be found [here](https://github.com/udacity/reactnd-contacts-server).
 
-## Contributing
+## Project Setup
 
-Because this is a code-along project and the commits correspond to specific videos in the program, we will not be accepting pull requests.
+- Clone the project - `git clone https://github.com/Manmohan7/reactnd-contacts-app.git`
+- Install the dependencies - `npm install`
 
-If you feel like there's a major problem, please open an issue to discuss the problem and potential resolution.
+## Development Server
+
+Run `npm run start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
+
+## Build
+
+Run `npm run build` to build the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
 ## License
 
